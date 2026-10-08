@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Divyesh Sandeep Kamble | Data Analyst</title>
+<meta name="description" content="Entry-level Data Analyst and Data Scientist skilled in Python, SQL, Power BI and Tableau. B.E. in AI & ML.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F7FA; --surface:#FFFFFF; --ink:#0B1630; --muted:#4B5A73; --line:#D8DEE8;
+  --blue:#1F78C8; --amber:#D99A00; --red:#D64545; --on-ink:#FFFFFF;
+  --display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --body:'Figtree','Segoe UI',system-ui,-apple-system,sans-serif;
+  --pad:clamp(20px,5vw,56px);
+}
+:root[data-theme="dark"]{
+  --bg:#0B1630; --surface:#12213F; --ink:#EAF0FA; --muted:#9FB0CC; --line:#24365A;
+  --blue:#4DB8F0; --amber:#F5B301; --red:#FF6B6B; --on-ink:#0B1630;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B1630; --surface:#12213F; --ink:#EAF0FA; --muted:#9FB0CC; --line:#24365A;
+    --blue:#4DB8F0; --amber:#F5B301; --red:#FF6B6B; --on-ink:#0B1630;
+  }
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 var(--pad)}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{font-family:var(--display);font-weight:800;font-size:1.1rem;text-decoration:none;letter-spacing:-.01em}
+nav{display:flex;align-items:center;gap:6px}
+nav a{padding:8px 12px;text-decoration:none;font-weight:500;font-size:.95rem;color:var(--muted);border-radius:8px}
+nav a:hover{color:var(--ink)}
+#theme{font:inherit;font-size:.9rem;font-weight:600;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:7px 14px;border-radius:999px;margin-left:6px}
+#theme:hover{border-color:var(--blue)}
+
+/* hero */
+.hero{padding:clamp(48px,9vw,110px) 0 clamp(48px,7vw,84px)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,72px);align-items:center}
+.avatar{width:84px;height:84px;border-radius:50%;object-fit:cover;display:grid;place-items:center;background:var(--ink);color:var(--on-ink);font-family:var(--display);font-weight:800;font-size:1.7rem;margin-bottom:22px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,6.4vw,4.6rem);line-height:1;letter-spacing:-.03em}
+.role{margin-top:14px;font-family:var(--display);font-weight:500;font-size:clamp(1.15rem,2.4vw,1.45rem);color:var(--blue)}
+.lead{margin-top:18px;max-width:34em;color:var(--muted);font-size:1.08rem}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-block;font-weight:600;font-size:.97rem;text-decoration:none;padding:12px 22px;border-radius:10px;border:1.5px solid var(--ink);transition:transform .15s,background .15s}
+.btn.primary{background:var(--ink);color:var(--on-ink)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn:hover{transform:translateY(-2px)}
+
+/* the one memorable moment: severity bar from the real dashboard */
+.sev{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px}
+.sev h2{font-family:var(--display);font-size:1.05rem;font-weight:700}
+.sev p.sub{color:var(--muted);font-size:.9rem;margin-top:2px}
+.bar{display:flex;height:46px;border-radius:10px;overflow:hidden;margin:22px 0 16px;background:var(--line)}
+.bar span{display:block;height:100%;width:0;transition:width 1.3s cubic-bezier(.2,.8,.2,1)}
+.bar .s1{background:var(--blue)} .bar .s2{background:var(--amber)} .bar .s3{background:var(--red)}
+.loaded .bar .s1{width:86%} .loaded .bar .s2{width:12.68%} .loaded .bar .s3{width:1.24%}
+.legend{list-style:none;padding:0;display:grid;gap:8px;font-size:.95rem}
+.legend li{display:flex;align-items:center;gap:10px}
+.legend i{width:12px;height:12px;border-radius:3px;flex:none}
+.legend b{margin-left:auto;font-variant-numeric:tabular-nums}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:22px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.kpis div{background:var(--surface);padding:12px 14px}
+.kpis strong{display:block;font-family:var(--display);font-size:1.5rem;line-height:1.1}
+.kpis small{color:var(--muted);font-size:.82rem}
+
+/* sections */
+section{padding:clamp(48px,7vw,88px) 0;border-top:1px solid var(--line)}
+h2.title{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,3.6vw,2.5rem);letter-spacing:-.02em;line-height:1.1;margin-bottom:34px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px)}
+.about p+p{margin-top:16px}
+.facts{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:6px 20px;align-self:start}
+.facts dl{display:grid;grid-template-columns:auto 1fr;gap:0 18px}
+.facts dt,.facts dd{padding:13px 0;border-bottom:1px solid var(--line)}
+.facts dt:nth-last-of-type(1),.facts dd:last-of-type{border-bottom:0}
+.facts dt{color:var(--muted);font-size:.92rem}
+.facts dd{font-weight:500;font-size:.95rem;overflow-wrap:break-word;min-width:0}
+
+.skills{display:grid;gap:0}
+.skills div{display:grid;grid-template-columns:200px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.skills div:first-child{border-top:1px solid var(--line)}
+.skills dt{font-family:var(--display);font-weight:700}
+.skills dd{color:var(--muted)}
+
+/* projects */
+.feature{background:var(--ink);color:var(--on-ink);border-radius:20px;padding:clamp(24px,4vw,44px);margin-bottom:40px}
+:root[data-theme="dark"] .feature{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .feature{background:var(--surface);color:var(--ink);border:1px solid var(--line)}}
+.feature h3{font-family:var(--display);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.feature .stack{margin-top:10px;opacity:.75;font-size:.95rem}
+.feature ul{margin:22px 0 0;padding-left:1.1em;display:grid;gap:10px;max-width:46em}
+.found{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.found div{border-top:3px solid var(--blue);padding-top:12px}
+.found div:nth-child(2){border-color:var(--amber)} .found div:nth-child(3){border-color:var(--red)}
+.found strong{display:block;font-family:var(--display);font-size:2rem;line-height:1.1}
+.found span{font-size:.93rem;opacity:.8}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:28px}
+.shots figure img{width:100%;border-radius:10px;display:block;border:1px solid rgba(255,255,255,.15)}
+.shots:empty{display:none}
+.more{list-style:none;padding:0}
+.more > li{display:grid;grid-template-columns:1fr 1.5fr;gap:12px 40px;padding:26px 0;border-top:1px solid var(--line)}
+.more > li:last-child{border-bottom:1px solid var(--line)}
+.more h3{font-family:var(--display);font-size:1.25rem;font-weight:700;line-height:1.25}
+.more .stack{color:var(--blue);font-weight:600;font-size:.95rem;margin-top:4px}
+.more ul{list-style:disc;padding-left:1.1em;display:grid;gap:6px;color:var(--muted)}
+
+/* experience timeline: a real sequence */
+.tl{list-style:none;padding:0;margin-left:8px;border-left:2px solid var(--line)}
+.tl > li{position:relative;padding:0 0 38px 30px}
+.tl > li:last-child{padding-bottom:0}
+.tl > li::before{content:"";position:absolute;left:-8px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--blue)}
+.tl h3{font-family:var(--display);font-size:1.25rem;font-weight:700}
+.tl .when{color:var(--muted);font-size:.93rem;margin:2px 0 10px}
+.tl ul{list-style:disc;padding-left:1.1em;display:grid;gap:6px;color:var(--muted)}
+
+.edu{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px)}
+.edu h3{font-family:var(--display);font-size:1.15rem;font-weight:700;margin-bottom:14px}
+.edu p{margin-bottom:12px}.edu small{display:block;color:var(--muted)}
+.edu ul{padding-left:1.1em;display:grid;gap:8px}
+
+.contact{text-align:center}
+.contact .title{margin-bottom:16px}
+.contact .intro{max-width:30em;margin:0 auto 34px;color:var(--muted);font-size:1.08rem}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:760px;margin:0 auto 28px;text-align:left}
+.card{display:block;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 22px;text-decoration:none;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--blue);transform:translateY(-2px)}
+.card small{display:block;color:var(--muted);font-size:.88rem;margin-bottom:2px}
+.card span{font-weight:600;font-size:.97rem;overflow-wrap:break-word}
+.links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:.9rem}
+
+@media (max-width:820px){
+  .hero .wrap,.about,.edu,.more > li{grid-template-columns:1fr}
+  .skills div{grid-template-columns:1fr;gap:4px}
+  .found{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+  nav a{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .bar span{transition:none}
+  .btn,.card{transition:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">Divyesh Kamble</a>
+    <nav aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <button id="theme" type="button" aria-label="Switch between light and dark theme">Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <!-- To show your photo: save it as photo.jpg in the same folder as this file. Until then, initials are shown. -->
+      <img class="avatar" src="photo.jpg" alt="Divyesh Kamble" width="84" height="84"
+           onerror="this.outerHTML='<div class=&quot;avatar&quot; aria-hidden=&quot;true&quot;>DK</div>'">
+      <h1>Divyesh Sandeep Kamble</h1>
+      <p class="role">Data Analyst &amp; Data Science fresher</p>
+      <p class="lead">I clean data, find the pattern in it, and turn it into dashboards people can act on. I work in Python, SQL, Power BI and Tableau. I'm looking for an entry-level Data Analyst or Data Scientist role.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">View projects</a>
+        <a class="btn ghost" href="Divyesh_Kamble_Resume.pdf" target="_blank" rel="noopener">View resume</a>
+        <a class="btn ghost" href="Divyesh_Kamble_Resume.pdf" download>Download resume</a>
+      </div>
+    </div>
+
+    <aside class="sev" aria-label="Summary of the Smart Road Safety dashboard">
+      <h2>From my road safety dashboard</h2>
+      <p class="sub">Share of 52K accidents by severity, 2018</p>
+      <div class="bar" role="img" aria-label="86 percent slight, 12.7 percent serious, 1.24 percent fatal">
+        <span class="s1"></span><span class="s2"></span><span class="s3"></span>
+      </div>
+      <ul class="legend">
+        <li><i style="background:var(--blue)"></i>Slight<b>86.0%</b></li>
+        <li><i style="background:var(--amber)"></i>Serious<b>12.7%</b></li>
+        <li><i style="background:var(--red)"></i>Fatal<b>1.24%</b></li>
+      </ul>
+      <div class="kpis">
+        <div><strong>52K</strong><small>accidents analyzed</small></div>
+        <div><strong>70K</strong><small>casualties</small></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <h2 class="title">About me</h2>
+    <div class="about">
+      <div>
+        <p>I'm a B.E. graduate in Artificial Intelligence &amp; Machine Learning from Mumbai. I enjoy the part of analysis where messy data turns into a clear answer: cleaning it, checking it, and finding what it says.</p>
+        <p>My strongest work is a five-page Power BI dashboard on road accidents, built on a star-schema model with DAX measures. I've also built an anomaly-detection system for IT incidents and an NLP summarizer, and I recently finished a data analyst internship at Imarticus Learning.</p>
+        <p>I'm now looking for an entry-level role where I can keep learning while contributing to real reporting and analytics work.</p>
+      </div>
+      <div class="facts">
+        <dl>
+          <dt>Location</dt><dd>Thane, Maharashtra</dd>
+          <dt>Degree</dt><dd>B.E. in AI &amp; ML (2022 – 2026)</dd>
+          <dt>Email</dt><dd><a href="mailto:divyeshkamble90@gmail.com">divyeshkamble90@gmail.com</a></dd>
+          <dt>Phone</dt><dd><a href="tel:+919821744707">+91 9821744707</a></dd>
+          <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/divyesh-kamble-637524293" target="_blank" rel="noopener">divyesh-kamble</a></dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2 class="title">Skills</h2>
+    <dl class="skills">
+      <div><dt>Languages</dt><dd>Python, SQL</dd></div>
+      <div><dt>BI &amp; dashboards</dt><dd>Power BI, DAX, Tableau, Excel, Data Modeling (Star Schema), KPI Reporting, Dashboard Design</dd></div>
+      <div><dt>Analysis</dt><dd>Exploratory Data Analysis, Descriptive and Statistical Analysis, Trend and Pattern Analysis</dd></div>
+      <div><dt>Data preparation</dt><dd>Data Cleaning, Transformation, Validation, Aggregation, Feature Preparation</dd></div>
+      <div><dt>Machine learning</dt><dd>Predictive Modeling, Anomaly Detection, LSTM, Isolation Forest</dd></div>
+      <div><dt>AI and NLP</dt><dd>Natural Language Processing, LLM, RAG, Text Summarization</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2 class="title">Projects</h2>
+
+    <article class="feature">
+      <h3>Smart Road Safety Intelligence Dashboard</h3>
+      <p class="stack">Power BI · DAX · Data modeling</p>
+      <ul>
+        <li>A five-page interactive dashboard on 52K road accidents and 70K casualties (2018), built to find black spots, weigh risk factors and support safety recommendations.</li>
+        <li>Star-schema model (Fact_Accidents, Dim_Casualties, Dim_Vehicles) with DAX measures for average casualties per accident and fatal accident rate.</li>
+        <li>15+ visuals including donut, treemap, matrix, scatter, stacked area and map, with date-range slicers and drill-down.</li>
+        <li>Severity analyzed against weather, light, road surface, road class, junction type, speed limit and casualty age.</li>
+      </ul>
+      <div class="found">
+        <div><strong>86%</strong><span>of accidents were slight injuries</span></div>
+        <div><strong>71%</strong><span>happened on dry road surfaces</span></div>
+        <div><strong>1.24%</strong><span>were fatal accidents</span></div>
+      </div>
+      <!-- Add screenshots to an "images" folder named dashboard-1.png, dashboard-2.png, dashboard-3.png. Missing images are hidden automatically. -->
+      <div class="shots">
+        <figure><img src="images/dashboard-1.png" alt="Overview page of the road safety dashboard" loading="lazy" onerror="this.closest('figure').remove()"></figure>
+        <figure><img src="images/dashboard-2.png" alt="Road and environmental analysis page" loading="lazy" onerror="this.closest('figure').remove()"></figure>
+        <figure><img src="images/dashboard-3.png" alt="Interactive insights page" loading="lazy" onerror="this.closest('figure').remove()"></figure>
+      </div>
+    </article>
+
+    <ul class="more">
+      <li>
+        <div><h3>Intelligent AI Incident Management Assistant (AIOps)</h3><p class="stack">Machine learning, NLP, LLM, RAG</p></div>
+        <ul>
+          <li>End-to-end system for automated incident detection, root-cause analysis and resolution.</li>
+          <li>LSTM and Isolation Forest models for anomaly detection, with 94.3% detection accuracy in project evaluation.</li>
+          <li>LLM-powered RAG chatbot integrated with Slack for real-time DevOps queries.</li>
+          <li>Evaluation showed a 67% cut in incident detection time and a 45% cut in Mean Time to Resolve.</li>
+        </ul>
+      </li>
+      <li>
+        <div><h3>Football Match Score Prediction &amp; Analytics Dashboard</h3><p class="stack">SQL, data visualization</p></div>
+        <ul>
+          <li>SQL analysis of historical match data to find scoring patterns, team performance and trends.</li>
+          <li>Cleaned, transformed and aggregated the data to support score prediction.</li>
+          <li>Visuals for team statistics, predicted scores and win, draw and loss trends.</li>
+        </ul>
+      </li>
+      <li>
+        <div><h3>Text Summarization System</h3><p class="stack">NLP, Python</p></div>
+        <ul>
+          <li>NLP pipeline that produces concise summaries from large documents using extractive summarization.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2 class="title">Experience</h2>
+    <ol class="tl">
+      <li>
+        <h3>Data Analyst and Data Science Intern, Imarticus Learning</h3>
+        <p class="when">Jul 2026 – Sep 2026 · Thane, Maharashtra</p>
+        <ul>
+          <li>Prepared, cleaned, transformed and analyzed datasets using Python, SQL and Excel.</li>
+          <li>Applied validation, aggregation and modeling to structure data for analysis and visualization.</li>
+          <li>Built Power BI and Tableau dashboards to communicate KPIs, trends and findings.</li>
+          <li>Supported reporting requirements and turned analytical output into clear business insights.</li>
+        </ul>
+      </li>
+      <li>
+        <h3>Data Analyst Job Simulation, Deloitte Australia</h3>
+        <p class="when">Dec 2025 – Sep 2026 · Virtual experience</p>
+        <ul>
+          <li>Analyzed datasets to identify trends, patterns and business insights.</li>
+          <li>Created interactive Tableau dashboards and did Excel-based analysis and reporting.</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2 class="title">Education and certifications</h2>
+    <div class="edu">
+      <div>
+        <h3>Education</h3>
+        <p><strong>B.E. in Artificial Intelligence &amp; Machine Learning</strong><small>DILKAP Research Institute of Engineering &amp; Management Studies, Mumbai · Oct 2022 – May 2026</small></p>
+        <p><strong>HSC (Science)</strong><small>Satish Pradhan Dnyansadhana Junior College, Mumbai · Aug 2020 – Jul 2022</small></p>
+      </div>
+      <div>
+        <h3>Certifications</h3>
+        <ul>
+          <li>Data Analysis, Deloitte Australia</li>
+          <li>Data Analytics, Deloitte Job Simulation</li>
+          <li>AI Foundation, TCS iON Career Edge</li>
+          <li>Introduction to Data Analytics, Coursera</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2 class="title">Let's connect</h2>
+    <p class="intro">I'm open to entry-level Data Analyst and Data Science roles. Email is the fastest way to reach me.</p>
+    <div class="cards">
+      <a class="card" href="mailto:divyeshkamble90@gmail.com"><small>Email</small><span>divyeshkamble90@gmail.com</span></a>
+      <a class="card" href="tel:+919821744707"><small>Phone</small><span>+91 9821744707</span></a>
+      <a class="card" href="https://www.linkedin.com/in/divyesh-kamble-637524293" target="_blank" rel="noopener"><small>LinkedIn</small><span>divyesh-kamble</span></a>
+      <a class="card" href="https://github.com/divyesh-kamble" target="_blank" rel="noopener"><small>GitHub</small><span>divyesh-kamble</span></a>
+    </div>
+    <div class="links">
+      <a class="btn primary" href="Divyesh_Kamble_Resume.pdf" target="_blank" rel="noopener">View resume</a>
+      <a class="btn ghost" href="Divyesh_Kamble_Resume.pdf" download>Download resume</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">© 2026 Divyesh Sandeep Kamble</div></footer>
+
+<script>
+  // bar animates once when the page loads
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){ document.body.classList.add('loaded'); }); });
+
+  // theme toggle
+  var root = document.documentElement, btn = document.getElementById('theme');
+  function isDark(){
+    var t = root.getAttribute('data-theme');
+    return t ? t === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function label(){ btn.textContent = isDark() ? 'Light' : 'Dark'; }
+  try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch(e){}
+  label();
+  btn.addEventListener('click', function(){
+    var next = isDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+    label();
+  });
+</script>
+</body>
+</html>
